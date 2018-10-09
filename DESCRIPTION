@@ -1,7 +1,9 @@
 Package: sdsanalysis
 Title: What the Package Does (one line, title case)
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
+Authors@R: c(
+  person("Clemens", "Schmid", email = "clemens@nevrome.de", role = c("cre", "cph", "aut"))
+  )
 Description: What the package does (one paragraph).
 Depends: R (>= 3.5.0)
 License: GPL-2 | file LICENSE
