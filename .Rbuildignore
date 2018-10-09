@@ -1,3 +1,5 @@
 ^playground$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.travis\.yml$
+^data-raw$
