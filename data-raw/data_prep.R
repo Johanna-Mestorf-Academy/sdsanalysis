@@ -2,11 +2,6 @@
 variables <- data.table::fread("https://raw.githubusercontent.com/nevrome/sdsmeta/master/variable_list.csv")
 variable_values <- data.table::fread("https://raw.githubusercontent.com/nevrome/sdsmeta/master/variable_values_list.csv")
 
-# fix data type of columns
-variables %<>% dplyr::mutate(
-  variable_number = as.character(variable_number)
-) 
-
 # create variable hash table
 var_hash <- base::split(
   variables, 
