@@ -2,22 +2,39 @@
 variables <- data.table::fread("https://raw.githubusercontent.com/nevrome/sdsmeta/master/variable_list.csv")
 variable_values <- data.table::fread("https://raw.githubusercontent.com/nevrome/sdsmeta/master/variable_values_list.csv")
 
-variables
+# fix data type of columns
+variables %<>% dplyr::mutate(
+  variable_number = as.character(variable_number)
+) 
 
-vars_num_name <- hash::hash(as.character(variables$number), variables$name_unified_de)
+# create variable hash table
+var_hash <- base::split(
+  variables, 
+  variables$form_sheet_number
+) %>%
+  lapply( 
+    function(x) {
+      hash::hash(x$variable_number, x$name_unified_de)
+    }
+  ) %>%
+  hash()
 
+# create attribute hash table
 variable_values %<>%
   dplyr::left_join(
-    variable_selection %>% dplyr::select(number, form_sheet_number, name_unified_de), 
-    by = c("number", "form_sheet_number")
+    variables %>% dplyr::select(variable_number, form_sheet_number, name_unified_de), 
+    by = c("variable_number", "form_sheet_number")
   )
+attr_hash <- base::split(
+  variable_values, 
+  variable_values$name_unified_de
+) %>%
+  lapply( 
+    function(x) {
+      hash::hash(as.character(x$attribute_number), x$attribute_name)
+    }
+  ) %>%
+  hash()
 
-lapply( 
-  base::split(variable_values, variable_values$name_unified_de),
-  function(x) {
-    hash::hash(as.character(x$Ausprägungsnr), x$Ausprägungsname)
-  }
-)
-  
-
-devtools::use_data(vars_num_name, internal = TRUE)
+# store internal data (hash tables)
+devtools::use_data(var_hash, attr_hash, internal = TRUE, overwrite = TRUE, pkg = ".")
