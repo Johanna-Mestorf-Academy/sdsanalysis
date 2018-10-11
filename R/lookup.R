@@ -1,3 +1,32 @@
+#' lookup_everything
+#'
+#' @param x Dataframe. Table in SDS standard format.
+#' @param fb Numeric. Relevant Formblatt.
+#'
+#' @return Decoded and optimized SDS data.frame.
+#' 
+#' @export
+lookup_everything <- function(x, fb) {
+  
+  res <- x
+  
+  # decode variable names
+  names(res) <- sdsanalysis::lookup_vars(names(res), fb)
+  
+  # decode attributes
+  res <- purrr::map2_df(
+    res, 
+    names(res), 
+    .f = sdsanalysis::lookup_attrs
+  )
+  
+  # fix variable types
+  # res <- 
+  
+  return(res)
+  
+}
+
 #' lookup_vars
 #'
 #' @param x Character Vector. Keys to look up values.
