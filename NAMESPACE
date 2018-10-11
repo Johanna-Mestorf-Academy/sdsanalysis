@@ -2,4 +2,5 @@
 
 export(lookup_attrs)
 export(lookup_everything)
+export(lookup_var_types)
 export(lookup_vars)

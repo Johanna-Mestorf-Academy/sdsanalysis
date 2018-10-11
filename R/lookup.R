@@ -21,7 +21,11 @@ lookup_everything <- function(x, fb) {
   )
   
   # fix variable types
-  # res <- 
+  res <- purrr::map2_df(
+    res, 
+    names(res), 
+    .f = sdsanalysis::lookup_var_types
+  )
   
   return(res)
   
@@ -64,7 +68,7 @@ lookup_vars <- function(x, fb) {
 
 #' lookup_attrs
 #'
-#' @param x Character Vector. Keys to look up values.
+#' @param x Vector. Keys to look up values.
 #' @param vr Character. Relevant variable.
 #'
 #' @return Variable names.
@@ -97,3 +101,46 @@ lookup_attrs <- function(x, vr) {
   return(res)
 }
 
+#' lookup_var_types
+#'
+#' @param x Vector. Variable data.
+#' @param vr Character. Relevant variable.
+#'
+#' @return Variable names.
+#' 
+#' @export
+lookup_var_types <- function(x, vr) {
+  
+  # if no lookup possible than the input is returned
+  res <- x 
+  
+  # check which variables can be looked up
+  var_in_hash <- vr %in% hash::keys(var_hash_type)
+  
+  # if none can be looked up than the input is returned
+  if (!var_in_hash) {
+    return(res)
+  }
+  
+  # lookup for variables in hash
+  vr_type <- hash::values(var_hash_type, vr)
+  
+  # get trans function
+  vr_trans_function <- string_to_as(vr_type)
+  
+  # transform variable
+  res <- vr_trans_function(res)
+  
+  return(res)
+}
+
+# map type string to as.x function
+string_to_as <- function(x) {
+  switch(
+    x,
+    "integer" = as.integer,
+    "double" = as.double,
+    "factor" = as.factor,
+    "character" = as.character
+  )
+}

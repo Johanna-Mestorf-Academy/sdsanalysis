@@ -19,16 +19,7 @@ var_hash <- base::split(
   hash::hash()
 
 # create variable hash table: number -> r data type
-var_hash_type <- base::split(
-  variables, 
-  variables$form_sheet_number
-) %>%
-  lapply( 
-    function(x) {
-      hash::hash(x$variable_number, x$r_data_type)
-    }
-  ) %>%
-  hash::hash()
+var_hash_type <- hash::hash(variables$name_unified_de, variables$r_data_type)
 
 # create attribute hash table
 variable_values %<>%
