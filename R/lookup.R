@@ -24,7 +24,7 @@ lookup_everything <- function(x, fb) {
   res <- purrr::map2_df(
     res, 
     names(res), 
-    .f = sdsanalysis::lookup_var_types
+    .f = sdsanalysis::apply_var_types
   )
   
   return(res)
@@ -103,36 +103,54 @@ lookup_attrs <- function(x, vr) {
 
 #' lookup_var_types
 #'
-#' @param x Vector. Variable data.
 #' @param vr Character. Relevant variable.
 #'
-#' @return Variable names.
+#' @return Variable types.
 #' 
 #' @export
-lookup_var_types <- function(x, vr) {
-  
-  # if no lookup possible than the input is returned
-  res <- x 
+lookup_var_types <- function(vr) {
   
   # check which variables can be looked up
   var_in_hash <- vr %in% hash::keys(var_hash_type)
   
   # if none can be looked up than the input is returned
   if (!var_in_hash) {
-    return(res)
+    return(NA)
   }
   
-  # lookup for variables in hash
+  # lookup type for variable in hash
   vr_type <- hash::values(var_hash_type, vr)
+  
+  return(vr_type)
+}
+
+#' apply_var_types
+#'
+#' @param x Vector. Variable data. 
+#' @param vr Character. Relevant variable.
+#'
+#' @return Variable types.
+#' 
+#' @export
+apply_var_types <- function(x, vr) {
+  
+  # if no lookup possible than the input is returned
+  res <- x
+  
+  # lookup type for variable in hash
+  vr_type <- lookup_var_types(vr)
   
   # get trans function
   vr_trans_function <- string_to_as(vr_type)
   
-  # transform variable
-  res <- vr_trans_function(res)
+  # transform variable, if trans function is available
+  if (!is.null(vr_trans_function)) {
+    res <- vr_trans_function(res)
+  }
   
   return(res)
 }
+
 
 # map type string to as.x function
 string_to_as <- function(x) {
@@ -141,6 +159,7 @@ string_to_as <- function(x) {
     "integer" = as.integer,
     "double" = as.double,
     "factor" = as.factor,
-    "character" = as.character
+    "character" = as.character,
+    NA
   )
 }
