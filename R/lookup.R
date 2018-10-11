@@ -151,7 +151,6 @@ apply_var_types <- function(x, vr) {
   return(res)
 }
 
-
 # map type string to as.x function
 string_to_as <- function(x) {
   switch(
