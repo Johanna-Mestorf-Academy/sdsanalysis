@@ -21,7 +21,7 @@ var_hash <- base::split(
 # create variable hash table: number -> r data type
 var_hash_type <- hash::hash(variables$name_unified_de, variables$r_data_type)
 
-# create attribute hash table
+# create attribute name hash table
 variable_values %<>%
   dplyr::left_join(
     variables %>% dplyr::select(variable_number, form_sheet_number, name_unified_de), 
@@ -38,10 +38,23 @@ attr_hash <- base::split(
   ) %>%
   hash::hash()
 
+# create attribute type hash table
+attr_hash_type <- base::split(
+  variable_values, 
+  variable_values$name_unified_de
+) %>%
+  lapply( 
+    function(x) {
+      hash::hash(as.character(x$attribute_number), x$attribute_type)
+    }
+  ) %>%
+  hash::hash()
+
 #### store internal data (hash tables) ####
 devtools::use_data(
   var_hash,
   var_hash_type,
-  attr_hash, 
+  attr_hash,
+  attr_hash_type,
   internal = TRUE, overwrite = TRUE, pkg = "."
 )
