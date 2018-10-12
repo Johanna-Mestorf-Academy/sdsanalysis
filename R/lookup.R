@@ -13,6 +13,13 @@ lookup_everything <- function(x, fb) {
   # decode variable names
   names(res) <- sdsanalysis::lookup_vars(names(res), fb)
   
+  # replace NA attributes based on attribute type
+  res <- purrr::map2_df(
+    res, 
+    names(res), 
+    .f = sdsanalysis::apply_attr_types
+  )
+  
   # decode attributes
   res <- purrr::map2_df(
     res, 
@@ -94,7 +101,7 @@ lookup_var_types <- function(vr) {
 #' @param x Vector. Variable data. 
 #' @param vr Character. Relevant variable.
 #'
-#' @return Variable types.
+#' @return Replacement vectors.
 #' 
 #' @export
 apply_var_types <- function(x, vr) {
@@ -150,7 +157,7 @@ lookup_attrs <- function(x, vr) {
   vr_hash <- hash::values(attr_hash, vr)[[1]]
   
   # check which variables can be looked up
-  attr_in_hash <- x %in% hash::keys(vr_hash)
+  attr_in_hash <- res %in% hash::keys(vr_hash)
   
   # if none can be looked up than the input is returned
   if (!any(attr_in_hash)) {
@@ -158,7 +165,81 @@ lookup_attrs <- function(x, vr) {
   }
   
   # lookup for variables in hash
-  res[attr_in_hash] <- hash::values(vr_hash, x[attr_in_hash])
+  res[attr_in_hash] <- hash::values(vr_hash, res[attr_in_hash])
   
   return(res)
 }
+
+#' lookup_attr_types
+#'
+#' @param x Vector. Keys to look up values.
+#' @param vr Character. Relevant variable.
+#'
+#' @return Variable names.
+#' 
+#' @export
+lookup_attr_types <- function(x, vr) {
+  
+  # if no lookup possible than the input is returned
+  res <- x 
+  
+  # check if there is a hash for this variable
+  if (!(vr %in% hash::keys(attr_hash_type))) {
+    return(res)
+  }
+  
+  # get relevant hash for vr
+  vr_hash <- hash::values(attr_hash_type, vr)[[1]]
+  
+  # check which variables can be looked up
+  attr_in_hash <- res %in% hash::keys(vr_hash)
+  
+  # if none can be looked up than the input is returned
+  if (!any(attr_in_hash)) {
+    return(res)
+  }
+  
+  # lookup for variables in hash
+  res[attr_in_hash] <- hash::values(vr_hash, res[attr_in_hash])
+  
+  return(res)
+}
+
+#' apply_attr_types
+#'
+#' @param x Vector. Variable data. 
+#' @param vr Character. Relevant variable.
+#'
+#' @return Replacement vectors.
+#' 
+#' @export
+apply_attr_types <- function(x, vr) {
+  
+  # if no lookup possible than the input is returned
+  res <- x
+  
+  # lookup type for variable in hash
+  attr_types <- lookup_attr_types(res, vr)
+  
+  # get replacement vector
+  replacement_vector <- unlist(purrr::map2(attr_types, res, na_vars_switch))
+  
+  # transform variable
+  res <- replacement_vector
+  
+  return(res)
+}
+
+# map attr type string to as.x function
+na_vars_switch <- function(attr_type, value) {
+  switch(
+    as.character(attr_type),
+    "normal" = value,
+    "unknown" = NA,
+    "absent" = NA,
+    "cat_in_num" = NA,
+    value
+  )
+}
+
+
