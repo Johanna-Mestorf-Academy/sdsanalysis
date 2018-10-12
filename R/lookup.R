@@ -66,41 +66,6 @@ lookup_vars <- function(x, fb) {
   return(res)
 }
 
-#' lookup_attrs
-#'
-#' @param x Vector. Keys to look up values.
-#' @param vr Character. Relevant variable.
-#'
-#' @return Variable names.
-#' 
-#' @export
-lookup_attrs <- function(x, vr) {
-  
-  # if no lookup possible than the input is returned
-  res <- x 
-  
-  # check if there is a hash for this variable
-  if (!(vr %in% hash::keys(attr_hash))) {
-    return(res)
-  }
-  
-  # get relevant hash for vr
-  vr_hash <- hash::values(attr_hash, vr)[[1]]
-  
-  # check which variables can be looked up
-  attr_in_hash <- x %in% hash::keys(vr_hash)
-  
-  # if none can be looked up than the input is returned
-  if (!any(attr_in_hash)) {
-    return(res)
-  }
-  
-  # lookup for variables in hash
-  res[attr_in_hash] <- hash::values(vr_hash, x[attr_in_hash])
-  
-  return(res)
-}
-
 #' lookup_var_types
 #'
 #' @param vr Character. Relevant variable.
@@ -161,4 +126,39 @@ string_to_as <- function(x) {
     "character" = as.character,
     NA
   )
+}
+
+#' lookup_attrs
+#'
+#' @param x Vector. Keys to look up values.
+#' @param vr Character. Relevant variable.
+#'
+#' @return Variable names.
+#' 
+#' @export
+lookup_attrs <- function(x, vr) {
+  
+  # if no lookup possible than the input is returned
+  res <- x 
+  
+  # check if there is a hash for this variable
+  if (!(vr %in% hash::keys(attr_hash))) {
+    return(res)
+  }
+  
+  # get relevant hash for vr
+  vr_hash <- hash::values(attr_hash, vr)[[1]]
+  
+  # check which variables can be looked up
+  attr_in_hash <- x %in% hash::keys(vr_hash)
+  
+  # if none can be looked up than the input is returned
+  if (!any(attr_in_hash)) {
+    return(res)
+  }
+  
+  # lookup for variables in hash
+  res[attr_in_hash] <- hash::values(vr_hash, x[attr_in_hash])
+  
+  return(res)
 }
