@@ -6,7 +6,7 @@ variable_values <- data.table::fread("https://raw.githubusercontent.com/nevrome/
 
 #### create hash tables ####
 
-# create variable hash table: number -> unified name
+# create variable hash table: variable number -> variable unified name
 var_hash <- base::split(
   variables, 
   variables$form_sheet_number
@@ -18,10 +18,10 @@ var_hash <- base::split(
   ) %>%
   hash::hash()
 
-# create variable hash table: number -> r data type
+# create variable hash table: variable number -> variable r data type
 var_hash_type <- hash::hash(variables$name_unified_de, variables$r_data_type)
 
-# create attribute name hash table
+# create attribute name hash table: attribute number -> attribute complete name
 variable_values %<>%
   dplyr::left_join(
     variables %>% dplyr::select(variable_number, form_sheet_number, name_unified_de), 
@@ -38,7 +38,7 @@ attr_hash <- base::split(
   ) %>%
   hash::hash()
 
-# create attribute type hash table
+# create attribute type hash table: attribute number -> attribute type
 attr_hash_type <- base::split(
   variable_values, 
   variable_values$name_unified_de
