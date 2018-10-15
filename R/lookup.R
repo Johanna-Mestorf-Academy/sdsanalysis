@@ -85,15 +85,11 @@ lookup_var_complete_names <- function(vr) {
   # check which variables can be looked up
   var_in_hash <- vr %in% hash::keys(var_hash_type)
   
-  # if none can be looked up than NA is returned
-  if (!var_in_hash) {
-    return(NA)
-  }
-  
+  vr_complete_name <- vr
   # lookup complete name for variable in hash
-  vr_complete_name <- hash::values(var_hash_complete_name, vr)
+  vr_complete_name[var_in_hash] <- hash::values(var_hash_complete_name, vr[var_in_hash])
   
-  return(vr_complete_name)
+  return(unlist(vr_complete_name))
 }
 
 #' lookup_var_types
@@ -108,15 +104,11 @@ lookup_var_types <- function(vr) {
   # check which variables can be looked up
   var_in_hash <- vr %in% hash::keys(var_hash_type)
   
-  # if none can be looked up than NA is returned
-  if (!var_in_hash) {
-    return(NA)
-  }
-  
+  vr_type <- rep(NA, length(vr))
   # lookup type for variable in hash
-  vr_type <- hash::values(var_hash_type, vr)
+  vr_type[var_in_hash] <- hash::values(var_hash_type, vr[var_in_hash])
   
-  return(vr_type)
+  return(unlist(vr_type))
 }
 
 #' apply_var_types
