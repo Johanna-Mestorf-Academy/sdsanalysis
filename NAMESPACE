@@ -2,6 +2,7 @@
 
 export(apply_attr_types)
 export(apply_var_types)
+export(dynamic_plot)
 export(lookup_attr_types)
 export(lookup_attrs)
 export(lookup_everything)
