@@ -18,7 +18,10 @@ var_hash <- base::split(
   ) %>%
   hash::hash()
 
-# create variable hash table: variable number -> variable r data type
+# create variable hash table: variable unified name -> variable complete name
+var_hash_complete_name <- hash::hash(variables$name_unified_de, variables$name_de)
+
+# create variable hash table: variable unified name -> variable r data type
 var_hash_type <- hash::hash(variables$name_unified_de, variables$r_data_type)
 
 # create attribute name hash table: attribute number -> attribute complete name
@@ -53,6 +56,7 @@ attr_hash_type <- base::split(
 #### store internal data (hash tables) ####
 devtools::use_data(
   var_hash,
+  var_hash_complete_name,
   var_hash_type,
   attr_hash,
   attr_hash_type,
