@@ -73,6 +73,29 @@ lookup_vars <- function(x, fb) {
   return(res)
 }
 
+#' lookup_var_complete_names
+#'
+#' @param vr Character Vector. Short variable names to look up.
+#'
+#' @return Complete variable names.
+#' 
+#' @export
+lookup_var_complete_names <- function(vr) {
+  
+  # check which variables can be looked up
+  var_in_hash <- vr %in% hash::keys(var_hash_type)
+  
+  # if none can be looked up than NA is returned
+  if (!var_in_hash) {
+    return(NA)
+  }
+  
+  # lookup complete name for variable in hash
+  vr_complete_name <- hash::values(var_hash_complete_name, vr)
+  
+  return(vr_complete_name)
+}
+
 #' lookup_var_types
 #'
 #' @param vr Character. Relevant variable.
@@ -85,7 +108,7 @@ lookup_var_types <- function(vr) {
   # check which variables can be looked up
   var_in_hash <- vr %in% hash::keys(var_hash_type)
   
-  # if none can be looked up than the input is returned
+  # if none can be looked up than NA is returned
   if (!var_in_hash) {
     return(NA)
   }
