@@ -1,8 +1,8 @@
 library(magrittr)
 
 #### get meta data ####
-variables <- data.table::fread("https://raw.githubusercontent.com/nevrome/sdsmeta/master/variable_list.csv")
-variable_values <- data.table::fread("https://raw.githubusercontent.com/nevrome/sdsmeta/master/variable_values_list.csv")
+variables <- data.table::fread("data-raw/variable_list.csv")
+variable_values <- data.table::fread("data-raw/variable_values_list.csv")
 
 #### create hash tables ####
 
