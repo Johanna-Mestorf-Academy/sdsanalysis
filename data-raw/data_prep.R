@@ -1,6 +1,7 @@
 library(magrittr)
 
 #### get meta data ####
+data_position <- data.table::fread("data-raw/data_position_list.csv")
 variables <- data.table::fread("data-raw/variable_list.csv")
 variable_values <- data.table::fread("data-raw/variable_values_list.csv")
 
@@ -55,6 +56,7 @@ attr_hash_type <- base::split(
 
 #### store internal data (hash tables) ####
 devtools::use_data(
+  data_position,
   var_hash,
   var_hash_complete_name,
   var_hash_type,
