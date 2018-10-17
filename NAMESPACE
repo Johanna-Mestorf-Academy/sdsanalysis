@@ -2,8 +2,12 @@
 
 export(apply_attr_types)
 export(apply_var_types)
+export(get_available_datasets)
+export(get_data)
+export(get_description_HTML)
 export(lookup_attr_types)
 export(lookup_attrs)
+export(lookup_data_positions)
 export(lookup_everything)
 export(lookup_var_complete_names)
 export(lookup_var_types)
