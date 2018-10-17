@@ -11,17 +11,16 @@ get_data <- function(dataset_name) {
   return(dataset)
 }
 
-#' get_description_HTML
+#' get_description
 #'
 #' @param dataset_name Character. Name of an available dataset.
 #'
 #' @export
-get_description_HTML <- function(dataset_name) {
+get_description <- function(dataset_name) {
   dataset_position_table <- lookup_data_positions(dataset_name)
   dataset_description_url <- dataset_position_table$url[data_position$fb == "description"]
   description <- readLines(dataset_description_url)
-  description_HTML <- paste(description, collapse = "<br>")
-  return(description_HTML)
+  return(description)
 }
 
 #' lookup_data_positions
