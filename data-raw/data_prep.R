@@ -62,6 +62,16 @@ attr_hash_type <- base::split(
   ) %>%
   hash::hash()
 
+# create IGerM category hash table: IGerM name -> category name
+IGerM_category_hash <- variable_values %>%
+  dplyr::filter(variable_number == "IGerM") %$%
+  hash::hash(attribute_name, attribute_category_name)
+
+# create IGerM subcategory hash table: IGerM name -> subcategory name
+IGerM_subcategory_hash <- variable_values %>%
+  dplyr::filter(variable_number == "IGerM") %$%
+  hash::hash(attribute_name, attribute_subcategory_name)
+
 #### store internal data (hash tables) ####
 devtools::use_data(
   data_position,
@@ -70,5 +80,7 @@ devtools::use_data(
   var_hash_type,
   attr_hash,
   attr_hash_type,
+  IGerM_category_hash,
+  IGerM_subcategory_hash,
   internal = TRUE, overwrite = TRUE, pkg = "."
 )
