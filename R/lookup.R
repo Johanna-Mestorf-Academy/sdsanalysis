@@ -257,4 +257,33 @@ na_vars_switch <- function(attr_type, value) {
   )
 }
 
-
+#' lookup_IGerM_category
+#'
+#' @param x Character vector. Keys to look up values.
+#' @param subcategory Boolean. Should the function return IGerM subcategories instead of categories?
+#'
+#' @export
+lookup_IGerM_category <- function(x, subcategory = FALSE) {
+  
+  cat_hash <- IGerM_category_hash
+  
+  if (subcategory) {
+    cat_hash <- IGerM_subcategory_hash
+  }
+  
+  res <- x
+  
+  # check which variables can be looked up
+  attr_in_hash <- res %in% hash::keys(cat_hash)
+  
+  # if none can be looked up than the input is returned
+  if (!any(attr_in_hash)) {
+    return(res)
+  }
+  
+  # lookup for variables in hash
+  res[attr_in_hash] <- hash::values(cat_hash, res[attr_in_hash])
+  
+  return(res)
+}
+  
