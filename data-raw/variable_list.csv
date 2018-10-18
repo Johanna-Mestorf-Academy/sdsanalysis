@@ -144,7 +144,7 @@
 130,2,"D","Angaben je nach Grundform","2.2.4.","Dechsel und Beile","2.2.4.7.","Schliff","zustand_schliff","Zustand des Schliffs",,"nominal","character",,1,248,248,"Drafehn/Bradtmoeller/Mischka (2008)."
 131,2,"D","Angaben je nach Grundform","2.2.4.","Dechsel und Beile","2.2.4.7.","Schliff","hohlschliff","Hohlschliff",,"nominal","character",,1,249,249,"Drafehn/Bradtmoeller/Mischka (2008)."
 132,2,"D","Angaben je nach Grundform","2.2.4.","Dechsel und Beile","2.2.4.8.","Umriss","umriss_symmetrie","Symmetrie des Umrisses",,"nominal","character",,1,250,250,"Nach Zimmermann (1988, 594)."
-133,2,"D","Angaben je nach Grundform","2.2.4.","Dechsel und Beile","2.2.4.9.","Um- / Nacharbeitung","bruchflaechen_sekundaer_mod","ueberschliffene Bruchflaechen (oder sekundaere Umgestaltung)",,"nominal","character",,1,251,251,"Nach Zimmermann (1988, 595)."
+133,2,"D","Angaben je nach Grundform","2.2.4.","Dechsel und Beile","2.2.4.9.","Um- / Nacharbeitung","bruchflaechen_sekundaer_mod","Ueberschliffene Bruchflaechen (oder sekundaere Umgestaltung)",,"nominal","character",,1,251,251,"Nach Zimmermann (1988, 595)."
 134,2,"D","Angaben je nach Grundform","2.2.4.","Dechsel und Beile","2.2.4.9.","Um- / Nacharbeitung","umarbeitung","Um- / Nacharbeitung",,"nominal","character",,1,252,252,"Drafehn/Bradtmoeller/Mischka (2008)."
 135,2,"D","Angaben je nach Grundform","2.2.4.","Dechsel und Beile","2.2.4.9.","Um- / Nacharbeitung","spaltrichtung_rohmaterial","Spaltrichtung des Rohmaterials",,"nominal","character",,1,253,253,"Nach Zimmermann (1988, 595)."
 1,3,,"Geraeteaufnahme","2.4.1.","SAP-Geraeteaufnahme",,,"fundortnr","Siedlungsnummer/Fundort",,"nominal","character",,4,1,4,"Nach Zimmermann (1988, 598)."
