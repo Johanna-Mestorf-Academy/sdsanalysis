@@ -1,9 +1,17 @@
 library(magrittr)
 
 #### get meta data ####
-data_position <- data.table::fread("data-raw/data_position_list.csv")
-variables <- data.table::fread("data-raw/variable_list.csv")
-variable_values <- data.table::fread("data-raw/variable_values_list.csv")
+data_position <- data.table::fread("data-raw/data_position_list.csv") %>% tibble::as.tibble()
+variables <- data.table::fread("data-raw/variable_list.csv") %>% tibble::as.tibble()
+variable_values <- data.table::fread("data-raw/variable_values_list.csv") %>% tibble::as.tibble()
+
+#### store external data
+devtools::use_data(
+  data_position,
+  variables,
+  variable_values,
+  overwrite = TRUE
+)
 
 #### create hash tables ####
 
