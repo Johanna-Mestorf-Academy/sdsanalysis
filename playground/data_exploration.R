@@ -1,5 +1,5 @@
 library(magrittr)
 
-x <- data.table::fread("../sdsmeta/example_data/Kuesterberg_fb1_test.csv", encoding = "Latin-1") %>% tibble::as.tibble()
+fb1 <- sdsanalysis::get_data("test_data")
 
-fb1_decoded <- lookup_everything(x, 1)
+fb1_decoded <- sdsanalysis::lookup_everything(fb1, 1)
