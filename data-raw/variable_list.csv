@@ -167,7 +167,7 @@
 "FB3_24",24,3,,"Geraeteaufnahme","2.4.2.","Spezielle Angaben zu Lateralretuschen, Endretuschen, Bohrern und Sticheln","2.4.2.2.","Stichel","verlauf_stichelbahn","Verlauf der Stichelbahn",,"nominal","character",,1,84,84,"Hartz (1999) und Luebke (2000)"
 "FB3_25",25,3,,"Geraeteaufnahme","2.4.2.","Spezielle Angaben zu Lateralretuschen, Endretuschen, Bohrern und Sticheln","2.4.2.2.","Stichel","anzahl_stichelschlaege","Anzahl der Stichelschlaege",,"cardinal","integer",,1,85,85,"Hartz (1999) und Luebke (2000)"
 "FB3_26",26,3,,"Geraeteaufnahme","2.4.2.","Spezielle Angaben zu Lateralretuschen, Endretuschen, Bohrern und Sticheln","2.4.2.2.","Stichel","nachschaerfung_stichel","Nachschaerfungen bei Sticheln",,"nominal","character",,1,86,86,"Hartz (1999) und Luebke (2000)"
-"FB4_7",7,4,,"Mikrolithen","2.5.3.","Typologie",,,"form_klasse","Klassifikation der Form",,"nominal","character",,4,26,29,"Drafehn/Bradtmoeller/Mischka (2008)."
+"FB4_7",7,4,,"Mikrolithen","2.5.3.","Typologie",,,"form_klasse","Klassifikation der Form",,"nominal","character",,4,26,29,"Drafehn (2014)."
 "FB4_8",8,4,,"Mikrolithen","2.5.4.","Schlagrichtung und Symmetrie",,,"lage_schlagpunkt","Lage des Schlagpunktes bei Orientierung nach Vorschrift",,"nominal","character",,1,30,30,"Nach Drafehn (2004, 11), veraendert."
 "FB4_9",9,4,,"Mikrolithen","2.5.4.","Schlagrichtung und Symmetrie",,,"symmetrie","Symmetrie/Lateralisation",,"nominal","character",,1,31,31,"Nach Drafehn (2004, 9; Abb. 20, Mitte)."
 "FB4_10",10,4,,"Mikrolithen","2.5.5.","Beschreibung der Kanten",,,"lage_retuschierte_kanten","Lage der retuschierten Kanten",,"nominal","character",,3,32,34,"Drafehn/Bradtmoeller/Mischka (2008)."
