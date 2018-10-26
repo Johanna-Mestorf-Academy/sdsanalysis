@@ -6,7 +6,7 @@ variables <- data.table::fread("data-raw/variable_list.csv") %>% tibble::as.tibb
 variable_values <- data.table::fread("data-raw/variable_values_list.csv") %>% tibble::as.tibble()
 
 #### store external data
-devtools::use_data(
+usethis::use_data(
   data_position,
   variables,
   variable_values,
@@ -73,7 +73,7 @@ IGerM_subcategory_hash <- variable_values %>%
   hash::hash(attribute_name, attribute_subcategory_name)
 
 #### store internal data (hash tables) ####
-devtools::use_data(
+usethis::use_data(
   data_position,
   var_hash,
   var_hash_complete_name,
@@ -82,5 +82,5 @@ devtools::use_data(
   attr_hash_type,
   IGerM_category_hash,
   IGerM_subcategory_hash,
-  internal = TRUE, overwrite = TRUE, pkg = "."
+  internal = TRUE, overwrite = TRUE
 )
