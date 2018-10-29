@@ -200,3 +200,4 @@
 "FB7_27",27,7,,"Sammelaufnahme","undokumentiert","Sammelaufnahme",,,"sammel_anzahl_unbekannt_naturflaeche","Anzahl keine Aussage zur natuerlichen Flaechenbedeckung",,"cardinal","integer",,3,68,70,"undokumentiert"
 "FB7_38",38,7,,"Sammelaufnahme","undokumentiert","Sammelaufnahme",,,"sammel_anzahl_artefakte","Anzahl aller Artefakte der jeweiligen Sortierungseinheit",,"cardinal","integer",,5,73,77,"undokumentiert"
 "FB7_39",39,7,,"Sammelaufnahme","undokumentiert","Sammelaufnahme",,,"sammel_gewicht_artefakte","Gewicht aller Artefakte der jeweiligen Sortierungseinheit",,"cardinal","double","g",5,78,82,"undokumentiert"
+"FBG_7",,,,"Sammelaufnahme","undokumentiert","Sammelaufnahme",,,"datierung","Befundatierung",,"nominal","character",,2,,,"undokumentiert"
