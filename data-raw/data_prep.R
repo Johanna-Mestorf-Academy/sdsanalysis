@@ -15,17 +15,8 @@ usethis::use_data(
 
 #### create hash tables ####
 
-# create variable hash table: variable number -> variable unified name
-var_hash <- base::split(
-  variables, 
-  variables$form_sheet_number
-) %>%
-  lapply( 
-    function(x) {
-      hash::hash(x$variable_number, x$name_unified_de)
-    }
-  ) %>%
-  hash::hash()
+# create variable hash table: variable id -> variable unified name
+var_hash <- hash::hash(variables$variable_id, variables$name_unified_de)
 
 # create variable hash table: variable unified name -> variable complete name
 var_hash_complete_name <- hash::hash(variables$name_unified_de, variables$name_de)
@@ -36,8 +27,8 @@ var_hash_type <- hash::hash(variables$name_unified_de, variables$r_data_type)
 # create attribute name hash table: attribute number -> attribute complete name
 variable_values %<>%
   dplyr::left_join(
-    variables %>% dplyr::select(variable_number, form_sheet_number, name_unified_de), 
-    by = c("variable_number", "form_sheet_number")
+    variables %>% dplyr::select(variable_id, name_unified_de), 
+    by = "variable_id"
   )
 attr_hash <- base::split(
   variable_values, 
@@ -64,12 +55,12 @@ attr_hash_type <- base::split(
 
 # create IGerM category hash table: IGerM name -> category name
 IGerM_category_hash <- variable_values %>%
-  dplyr::filter(variable_number == "IGerM") %$%
+  dplyr::filter(variable_id == "IGerM") %$%
   hash::hash(attribute_name, attribute_category_name)
 
 # create IGerM subcategory hash table: IGerM name -> subcategory name
 IGerM_subcategory_hash <- variable_values %>%
-  dplyr::filter(variable_number == "IGerM") %$%
+  dplyr::filter(variable_id == "IGerM") %$%
   hash::hash(attribute_name, attribute_subcategory_name)
 
 #### store internal data (hash tables) ####
