@@ -7,7 +7,7 @@
 lookup_var_complete_names(vr)
 }
 \arguments{
-\item{vr}{Character Vector. Short variable names to look up.}
+\item{vr}{Character Vector. Keys to look up values: Unified variable names.}
 }
 \value{
 Complete variable names.

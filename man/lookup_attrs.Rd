@@ -7,12 +7,12 @@
 lookup_attrs(x, vr)
 }
 \arguments{
-\item{x}{Vector. Keys to look up values.}
+\item{x}{Vector. Keys to look up values: Numeric or character values in database.}
 
-\item{vr}{Character. Relevant variable.}
+\item{vr}{Character. Relevant variable: Unified variable name.}
 }
 \value{
-Variable names.
+Transformed variable values.
 }
 \description{
 lookup_attrs

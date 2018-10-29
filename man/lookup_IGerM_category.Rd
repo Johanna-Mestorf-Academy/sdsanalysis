@@ -7,7 +7,7 @@
 lookup_IGerM_category(x, subcategory = FALSE)
 }
 \arguments{
-\item{x}{Character vector. Keys to look up values.}
+\item{x}{Character vector. Keys to look up values: IGerM character codes in data.}
 
 \item{subcategory}{Boolean. Should the function return IGerM subcategories instead of categories?}
 }

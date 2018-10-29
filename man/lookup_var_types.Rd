@@ -7,10 +7,10 @@
 lookup_var_types(vr)
 }
 \arguments{
-\item{vr}{Character. Relevant variable.}
+\item{vr}{Character. Keys to look up values: Unified variable names.}
 }
 \value{
-Variable types.
+Variable types (names of types as character vector).
 }
 \description{
 lookup_var_types

@@ -1,17 +1,16 @@
 #' lookup_everything
 #'
 #' @param x Dataframe. Table in SDS standard format.
-#' @param fb Numeric. Relevant Formblatt.
 #'
 #' @return Decoded and optimized SDS data.frame.
 #' 
 #' @export
-lookup_everything <- function(x, fb) {
+lookup_everything <- function(x) {
   
   res <- x
   
   # decode variable names
-  names(res) <- sdsanalysis::lookup_vars(names(res), fb)
+  names(res) <- sdsanalysis::lookup_vars(names(res))
   
   # replace NA attributes based on attribute type
   res <- purrr::map2_df(
@@ -40,27 +39,17 @@ lookup_everything <- function(x, fb) {
 
 #' lookup_vars
 #'
-#' @param x Character Vector. Keys to look up values.
-#' @param fb Numeric. Relevant Formblatt.
-#'
-#' @return Variable names.
+#' @param x Character Vector. Keys to look up values: Variable IDs.
+#' 
+#' @return Unified variable names.
 #' 
 #' @export
-lookup_vars <- function(x, fb) {
+lookup_vars <- function(x) {
 
-  # if no lookup possible than the input is returned
   res <- x 
   
-  # check if there is a hash for this fb
-  if (!fb %in% hash::keys(var_hash)) {
-    return(res)
-  }  
-  
-  # get relevant hash for fb
-  fb_hash <- hash::values(var_hash, fb)[[1]]
-
   # check which variables can be looked up
-  vars_in_hash <- x %in% hash::keys(fb_hash)
+  vars_in_hash <- x %in% hash::keys(var_hash)
   
   # if none can be looked up than the input is returned
   if (!any(vars_in_hash)) {
@@ -68,24 +57,25 @@ lookup_vars <- function(x, fb) {
   }
   
   # lookup for variables in hash
-  res[vars_in_hash] <- hash::values(fb_hash, x[vars_in_hash])
+  res[vars_in_hash] <- hash::values(var_hash, x[vars_in_hash])
   
   return(res)
 }
 
 #' lookup_var_complete_names
 #'
-#' @param vr Character Vector. Short variable names to look up.
+#' @param vr Character Vector. Keys to look up values: Unified variable names.
 #'
 #' @return Complete variable names.
 #' 
 #' @export
 lookup_var_complete_names <- function(vr) {
-  
-  # check which variables can be looked up
-  var_in_hash <- vr %in% hash::keys(var_hash_type)
-  
+
   vr_complete_name <- vr
+    
+  # check which variables can be looked up
+  var_in_hash <- vr %in% hash::keys(var_hash_complete_name)
+  
   # lookup complete name for variable in hash
   vr_complete_name[var_in_hash] <- hash::values(var_hash_complete_name, vr[var_in_hash])
   
@@ -94,17 +84,18 @@ lookup_var_complete_names <- function(vr) {
 
 #' lookup_var_types
 #'
-#' @param vr Character. Relevant variable.
+#' @param vr Character. Keys to look up values: Unified variable names.
 #'
-#' @return Variable types.
+#' @return Variable types (names of types as character vector).
 #' 
 #' @export
 lookup_var_types <- function(vr) {
   
+  vr_type <- rep(NA, length(vr))
+  
   # check which variables can be looked up
   var_in_hash <- vr %in% hash::keys(var_hash_type)
   
-  vr_type <- rep(NA, length(vr))
   # lookup type for variable in hash
   vr_type[var_in_hash] <- hash::values(var_hash_type, vr[var_in_hash])
   
@@ -114,14 +105,13 @@ lookup_var_types <- function(vr) {
 #' apply_var_types
 #'
 #' @param x Vector. Variable data. 
-#' @param vr Character. Relevant variable.
+#' @param vr Character. Relevant variable: Unified variable name.
 #'
-#' @return Replacement vectors.
+#' @return Replacement vector.
 #' 
 #' @export
 apply_var_types <- function(x, vr) {
   
-  # if no lookup possible than the input is returned
   res <- x
   
   # lookup type for variable in hash
@@ -152,15 +142,14 @@ string_to_as <- function(x) {
 
 #' lookup_attrs
 #'
-#' @param x Vector. Keys to look up values.
-#' @param vr Character. Relevant variable.
+#' @param x Vector. Keys to look up values: Numeric or character values in database.
+#' @param vr Character. Relevant variable: Unified variable name.
 #'
-#' @return Variable names.
+#' @return Transformed variable values.
 #' 
 #' @export
 lookup_attrs <- function(x, vr) {
   
-  # if no lookup possible than the input is returned
   res <- x 
   
   # check if there is a hash for this variable
@@ -172,7 +161,7 @@ lookup_attrs <- function(x, vr) {
   vr_hash <- hash::values(attr_hash, vr)[[1]]
   
   # check which variables can be looked up
-  attr_in_hash <- res %in% hash::keys(vr_hash)
+  attr_in_hash <- x %in% hash::keys(vr_hash)
   
   # if none can be looked up than the input is returned
   if (!any(attr_in_hash)) {
@@ -180,22 +169,21 @@ lookup_attrs <- function(x, vr) {
   }
   
   # lookup for variables in hash
-  res[attr_in_hash] <- hash::values(vr_hash, res[attr_in_hash])
+  res[attr_in_hash] <- hash::values(vr_hash, x[attr_in_hash])
   
   return(res)
 }
 
 #' lookup_attr_types
 #'
-#' @param x Vector. Keys to look up values.
-#' @param vr Character. Relevant variable.
+#' @param x Vector. Keys to look up values: Numeric or character values in database.
+#' @param vr Character. Relevant variable: Unified variable name.
 #'
-#' @return Variable names.
+#' @return Type of variable: Not data type, but "normal"/"absent"/"unknown".
 #' 
 #' @export
 lookup_attr_types <- function(x, vr) {
   
-  # if no lookup possible than the input is returned
   res <- x 
   
   # check if there is a hash for this variable
@@ -207,7 +195,7 @@ lookup_attr_types <- function(x, vr) {
   vr_hash <- hash::values(attr_hash_type, vr)[[1]]
   
   # check which variables can be looked up
-  attr_in_hash <- res %in% hash::keys(vr_hash)
+  attr_in_hash <- x %in% hash::keys(vr_hash)
   
   # if none can be looked up than the input is returned
   if (!any(attr_in_hash)) {
@@ -215,7 +203,7 @@ lookup_attr_types <- function(x, vr) {
   }
   
   # lookup for variables in hash
-  res[attr_in_hash] <- hash::values(vr_hash, res[attr_in_hash])
+  res[attr_in_hash] <- hash::values(vr_hash, x[attr_in_hash])
   
   return(res)
 }
@@ -223,21 +211,20 @@ lookup_attr_types <- function(x, vr) {
 #' apply_attr_types
 #'
 #' @param x Vector. Variable data. 
-#' @param vr Character. Relevant variable.
+#' @param vr Character. Relevant variable: Unified variable name.
 #'
 #' @return Replacement vectors.
 #' 
 #' @export
 apply_attr_types <- function(x, vr) {
   
-  # if no lookup possible than the input is returned
   res <- x
   
   # lookup type for variable in hash
-  attr_types <- lookup_attr_types(res, vr)
+  attr_types <- lookup_attr_types(x, vr)
   
   # get replacement vector
-  replacement_vector <- unlist(purrr::map2(attr_types, res, na_vars_switch))
+  replacement_vector <- unlist(purrr::map2(attr_types, x, na_vars_switch))
   
   # transform variable
   res <- replacement_vector
@@ -259,7 +246,7 @@ na_vars_switch <- function(attr_type, value) {
 
 #' lookup_IGerM_category
 #'
-#' @param x Character vector. Keys to look up values.
+#' @param x Character vector. Keys to look up values: IGerM character codes in data.
 #' @param subcategory Boolean. Should the function return IGerM subcategories instead of categories?
 #'
 #' @export

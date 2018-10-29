@@ -4,15 +4,13 @@
 \alias{lookup_vars}
 \title{lookup_vars}
 \usage{
-lookup_vars(x, fb)
+lookup_vars(x)
 }
 \arguments{
-\item{x}{Character Vector. Keys to look up values.}
-
-\item{fb}{Numeric. Relevant Formblatt.}
+\item{x}{Character Vector. Keys to look up values: Variable IDs.}
 }
 \value{
-Variable names.
+Unified variable names.
 }
 \description{
 lookup_vars

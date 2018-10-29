@@ -4,12 +4,10 @@
 \alias{lookup_everything}
 \title{lookup_everything}
 \usage{
-lookup_everything(x, fb)
+lookup_everything(x)
 }
 \arguments{
 \item{x}{Dataframe. Table in SDS standard format.}
-
-\item{fb}{Numeric. Relevant Formblatt.}
 }
 \value{
 Decoded and optimized SDS data.frame.

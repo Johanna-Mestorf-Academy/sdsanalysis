@@ -9,10 +9,10 @@ apply_var_types(x, vr)
 \arguments{
 \item{x}{Vector. Variable data.}
 
-\item{vr}{Character. Relevant variable.}
+\item{vr}{Character. Relevant variable: Unified variable name.}
 }
 \value{
-Replacement vectors.
+Replacement vector.
 }
 \description{
 apply_var_types
