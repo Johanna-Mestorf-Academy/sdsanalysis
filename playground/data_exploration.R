@@ -12,10 +12,14 @@ test2 <- utils::read.csv("../sdsdata/Kuesterberg/Kuesterberg.csv", stringsAsFact
 
 test2_decoded <- sdsanalysis::lookup_everything(test2)
 
+#### Hundesburg_Olbetal ####
+
+
+
 #### Bad-Oldesloe_Wolkenwehe #### 
 
 test_3 <- utils::read.csv(
-  "../sdsdata/Bad-Oldesloe_Wolkenwehe/Bad-Oldesloe_Wolkenwehe.csv",
+  "../sdsdata/Bad-Oldesloe_Wolkenwehe/Bad-Oldesloe_Wolkenwehe_multi.csv",
   stringsAsFactors = F
 ) %>% tibble::as.tibble()
 
@@ -28,4 +32,15 @@ test_4 <- utils::read.csv(
   stringsAsFactors = F
 ) %>% tibble::as.tibble()
 
-test4_decoded <- sdsanalysis::lookup_everything(test_3)
+test4_decoded <- sdsanalysis::lookup_everything(test_4)
+
+#### Wangels ####
+
+test_5 <- utils::read.csv(
+  "../sdsdata/Wangels/Wangels_multi.csv",
+  stringsAsFactors = F
+) %>% tibble::as.tibble()
+
+test5_decoded <- sdsanalysis::lookup_everything(test_5)
+
+
