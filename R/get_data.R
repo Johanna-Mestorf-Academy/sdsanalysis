@@ -6,6 +6,7 @@
 get_single_artefact_data <- function(dataset_name) {
   data_position <- lookup_data_positions(dataset_name)
   dataset_url <- data_position$url[data_position$type == "single_artefacts"]
+  if (length(dataset_url) == 0) {stop("No single artefact dataset ", dataset_name, " available.")}
   dataset <- utils::read.csv(dataset_url, stringsAsFactors = FALSE, check.names = FALSE)
   return(dataset)
 }
@@ -18,6 +19,7 @@ get_single_artefact_data <- function(dataset_name) {
 get_multi_artefact_data <- function(dataset_name) {
   data_position <- lookup_data_positions(dataset_name)
   dataset_url <- data_position$url[data_position$type == "multi_artefacts"]
+  if (length(dataset_url) == 0) {stop("No multi artefact dataset ", dataset_name, " available.")}
   dataset <- utils::read.csv(dataset_url, stringsAsFactors = FALSE, check.names = FALSE)
   return(dataset)
 }
@@ -30,6 +32,7 @@ get_multi_artefact_data <- function(dataset_name) {
 get_description <- function(dataset_name) {
   data_position <- lookup_data_positions(dataset_name)
   dataset_url <- data_position$url[data_position$type == "description"]
+  if (length(dataset_url) == 0) {stop("No description for dataset ", dataset_name, " available.")}
   description <- readLines(dataset_url)
   return(description)
 }
@@ -41,7 +44,9 @@ get_description <- function(dataset_name) {
 #' @export
 lookup_data_positions <- function(dataset_name) {
   data_position <- get_data_positions() 
-  data_position[data_position$dataset == dataset_name, ]
+  data_position_for_dataset <- data_position[data_position$dataset == dataset_name, ]
+  if (nrow(data_position_for_dataset) == 0) {stop("No dataset with this name available.")}
+  return(data_position_for_dataset)
 }
 
 #' get_available_datasets
