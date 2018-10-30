@@ -57,6 +57,6 @@ get_available_datasets <- function() {
 #' @export
 get_data_positions <- function() {
   pos <- "https://raw.githubusercontent.com/Johanna-Mestorf-Academy/sdsanalysis/master/data-raw/data_position_list.csv"
-  data_position <- utils::read.csv("data-raw/data_position_list.csv", stringsAsFactors = FALSE)
+  data_position <- utils::read.csv(pos, stringsAsFactors = FALSE)
   return(data_position)
 }
