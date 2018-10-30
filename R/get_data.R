@@ -49,6 +49,19 @@ lookup_data_positions <- function(dataset_name) {
   return(data_position_for_dataset)
 }
 
+#' get_type_options
+#'
+#' @param dataset_name Character. Name of an available dataset.
+#'
+#' @export
+get_type_options <- function(dataset_name) {
+  data_position <- get_data_positions()
+  data_position_for_dataset <- data_position[data_position$dataset == dataset_name, ]
+  if (nrow(data_position_for_dataset) == 0) {stop("No dataset with this name available.")}
+  types <- unique(data_position_for_dataset$type)
+  return(types[types != "description"])
+}
+
 #' get_available_datasets
 #'
 #' @export
