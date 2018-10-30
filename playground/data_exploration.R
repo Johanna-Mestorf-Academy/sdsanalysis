@@ -15,6 +15,10 @@ test1 <- utils::read.csv(
 
 test1_decoded <- sdsanalysis::lookup_everything(test1)
 
+get_single_artefact_data("Kuesterberg")
+get_multi_artefact_data("Kuesterberg")
+get_description("Kuesterberg")
+
 #### Hundesburg_Olbetal ####
 
 test2 <- utils::read.csv(
@@ -24,6 +28,10 @@ test2 <- utils::read.csv(
 
 test2_decoded <- sdsanalysis::lookup_everything(test2)
 
+get_single_artefact_data("Hundisburg_Olbetal")
+get_multi_artefact_data("Hundisburg_Olbetal")
+get_description("Hundisburg_Olbetal")
+
 #### Bad-Oldesloe_Wolkenwehe #### 
 
 test_3 <- utils::read.csv(
@@ -32,6 +40,10 @@ test_3 <- utils::read.csv(
 ) %>% tibble::as.tibble()
 
 test3_decoded <- sdsanalysis::lookup_everything(test_3)
+
+get_single_artefact_data("Bad-Oldesloe_Wolkenwehe")
+get_multi_artefact_data("Bad-Oldesloe_Wolkenwehe")
+get_description("Bad-Oldesloe_Wolkenwehe")
 
 #### Oldenburg_Dannau ####
 
