@@ -6,7 +6,6 @@ variable_values <- data.table::fread("data-raw/variable_values_list.csv") %>% ti
 
 #### store external data
 usethis::use_data(
-  data_position,
   variables,
   variable_values,
   overwrite = TRUE
