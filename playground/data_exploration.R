@@ -8,13 +8,21 @@ test_sds_decoded <- sdsanalysis::lookup_everything(test_sds)
 
 #### Kuesterberg ####
 
-test2 <- utils::read.csv("../sdsdata/Kuesterberg/Kuesterberg.csv", stringsAsFactors = F) %>% tibble::as.tibble()
+test1 <- utils::read.csv(
+  "../sdsdata/Kuesterberg/Kuesterberg_single.csv", 
+  stringsAsFactors = F
+) %>% tibble::as.tibble()
 
-test2_decoded <- sdsanalysis::lookup_everything(test2)
+test1_decoded <- sdsanalysis::lookup_everything(test1)
 
 #### Hundesburg_Olbetal ####
 
+test2 <- utils::read.csv(
+  "../sdsdata/Hundisburg_Olbetal/Hundisburg_Olbetal_single.csv", 
+  stringsAsFactors = F
+) %>% tibble::as.tibble()
 
+test2_decoded <- sdsanalysis::lookup_everything(test2)
 
 #### Bad-Oldesloe_Wolkenwehe #### 
 
