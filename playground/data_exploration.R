@@ -8,28 +8,14 @@ test_sds_decoded <- sdsanalysis::lookup_everything(test_sds)
 
 #### Kuesterberg ####
 
-test1 <- utils::read.csv(
-  "../sdsdata/Kuesterberg/Kuesterberg_single.csv", 
-  stringsAsFactors = F
-) %>% tibble::as.tibble()
-
-test1_decoded <- sdsanalysis::lookup_everything(test1)
-
-get_single_artefact_data("Kuesterberg")
-get_multi_artefact_data("Kuesterberg")
+test1_decoded_single <- get_single_artefact_data("Kuesterberg") %>% sdsanalysis::lookup_everything()
+test1_decoded_multi <- get_multi_artefact_data("Kuesterberg") %>% sdsanalysis::lookup_everything()
 get_description("Kuesterberg")
 
 #### Hundesburg_Olbetal ####
 
-test2 <- utils::read.csv(
-  "../sdsdata/Hundisburg_Olbetal/Hundisburg_Olbetal_single.csv", 
-  stringsAsFactors = F
-) %>% tibble::as.tibble()
-
-test2_decoded <- sdsanalysis::lookup_everything(test2)
-
-get_single_artefact_data("Hundisburg_Olbetal")
-get_multi_artefact_data("Hundisburg_Olbetal")
+test2_decoded_single <- get_single_artefact_data("Hundisburg_Olbetal") %>% sdsanalysis::lookup_everything()
+test2_decoded_multi <- get_multi_artefact_data("Hundisburg_Olbetal") %>% sdsanalysis::lookup_everything()
 get_description("Hundisburg_Olbetal")
 
 #### Bad-Oldesloe_Wolkenwehe #### 
