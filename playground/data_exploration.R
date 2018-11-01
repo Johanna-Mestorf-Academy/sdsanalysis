@@ -30,11 +30,7 @@ get_description("Oldenburg_Dannau")
 
 #### Wangels ####
 
-test_5 <- utils::read.csv(
-  "../sdsdata/Wangels/Wangels_multi.csv",
-  stringsAsFactors = F
-) %>% tibble::as.tibble()
-
-test5_decoded <- sdsanalysis::lookup_everything(test_5)
+test5_decoded_multi <- get_multi_artefact_data("Wangels") %>% sdsanalysis::lookup_everything()
+get_description("Wangels")
 
 
