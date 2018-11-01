@@ -20,15 +20,7 @@ get_description("Hundisburg_Olbetal")
 
 #### Bad-Oldesloe_Wolkenwehe #### 
 
-test_3 <- utils::read.csv(
-  "../sdsdata/Bad-Oldesloe_Wolkenwehe/Bad-Oldesloe_Wolkenwehe_multi.csv",
-  stringsAsFactors = F
-) %>% tibble::as.tibble()
-
-test3_decoded <- sdsanalysis::lookup_everything(test_3)
-
-get_single_artefact_data("Bad-Oldesloe_Wolkenwehe")
-get_multi_artefact_data("Bad-Oldesloe_Wolkenwehe")
+test3_decoded_multi <- get_multi_artefact_data("Bad-Oldesloe_Wolkenwehe") %>% sdsanalysis::lookup_everything()
 get_description("Bad-Oldesloe_Wolkenwehe")
 
 #### Oldenburg_Dannau ####
