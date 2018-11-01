@@ -25,12 +25,8 @@ get_description("Bad-Oldesloe_Wolkenwehe")
 
 #### Oldenburg_Dannau ####
 
-test_4 <- utils::read.csv(
-  "../sdsdata/Oldenburg_Dannau/Oldenburg_Dannau_multi.csv",
-  stringsAsFactors = F
-) %>% tibble::as.tibble()
-
-test4_decoded <- sdsanalysis::lookup_everything(test_4)
+test4_decoded_multi <- get_multi_artefact_data("Oldenburg_Dannau") %>% sdsanalysis::lookup_everything()
+get_description("Oldenburg_Dannau")
 
 #### Wangels ####
 
