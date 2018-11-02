@@ -132,8 +132,8 @@ apply_var_types <- function(x, vr) {
 string_to_as <- function(x) {
   switch(
     x,
-    "integer" = as.integer,
-    "double" = as.double,
+    "integer" = as.numeric,
+    "double" = as.numeric,
     "factor" = as.factor,
     "character" = as.character,
     NA
