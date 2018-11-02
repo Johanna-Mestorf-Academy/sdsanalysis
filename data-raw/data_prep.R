@@ -20,7 +20,7 @@ var_hash <- hash::hash(variables$variable_id, variables$name_unified_de)
 var_hash_complete_name <- hash::hash(variables$name_unified_de, variables$name_de)
 
 # create variable hash table: variable unified name -> variable r data type
-var_hash_type <- hash::hash(variables$name_unified_de, variables$r_data_type)
+var_hash_type <- hash::hash(variables$name_unified_de, variables$data_type)
 
 # create attribute name hash table: attribute number -> attribute complete name
 variable_values %<>%
