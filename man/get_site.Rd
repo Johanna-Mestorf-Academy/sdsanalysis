@@ -4,10 +4,10 @@
 \alias{get_site}
 \title{get_site}
 \usage{
-get_site(dataset_name)
+get_site(dataset_names)
 }
 \arguments{
-\item{dataset_name}{Character. Name of an available dataset.}
+\item{dataset_names}{Character vector. Names of available datasets.}
 }
 \description{
 get_site

@@ -2,13 +2,13 @@
 % Please edit documentation in R/get_data.R
 \name{get_coords}
 \alias{get_coords}
-\title{get_site}
+\title{get_coords}
 \usage{
-get_coords(dataset_name)
+get_coords(dataset_names)
 }
 \arguments{
-\item{dataset_name}{Character. Name of an available dataset.}
+\item{dataset_names}{Character vector. Names of available datasets.}
 }
 \description{
-get_site
+get_coords
 }

@@ -4,10 +4,10 @@
 \alias{get_single_artefact_data}
 \title{get_single_artefact_data}
 \usage{
-get_single_artefact_data(dataset_name)
+get_single_artefact_data(dataset_names)
 }
 \arguments{
-\item{dataset_name}{Character. Name of an available dataset.}
+\item{dataset_names}{Character vector. Names of available datasets.}
 }
 \description{
 get_single_artefact_data

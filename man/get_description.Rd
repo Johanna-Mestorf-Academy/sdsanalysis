@@ -4,10 +4,10 @@
 \alias{get_description}
 \title{get_description}
 \usage{
-get_description(dataset_name)
+get_description(dataset_names)
 }
 \arguments{
-\item{dataset_name}{Character. Name of an available dataset.}
+\item{dataset_names}{Character vector. Names of available datasets.}
 }
 \description{
 get_description
