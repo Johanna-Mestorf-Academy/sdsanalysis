@@ -4,12 +4,7 @@ library(magrittr)
 variables <- data.table::fread("data-raw/variable_list.csv") %>% tibble::as.tibble()
 variable_values <- data.table::fread("data-raw/variable_values_list.csv") %>% tibble::as.tibble()
 
-#### store external data
-usethis::use_data(
-  variables,
-  variable_values,
-  overwrite = TRUE
-)
+
 
 #### create hash tables ####
 
@@ -61,8 +56,12 @@ IGerM_subcategory_hash <- variable_values %>%
   dplyr::filter(variable_id == "IGerM") %$%
   hash::hash(attribute_name, attribute_subcategory_name)
 
+
+
 #### store internal data (hash tables) ####
 usethis::use_data(
+  variables,
+  variable_values,
   var_hash,
   var_hash_complete_name,
   var_hash_type,
