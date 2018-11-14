@@ -31,6 +31,16 @@ get_description <- function(dataset_name) {
   return(description)
 }
 
+#' get_site
+#'
+#' @param dataset_name Character. Name of an available dataset.
+#'
+#' @export
+get_site <- function(dataset_name) {
+  site <- get_metadata(dataset_name, "site")
+  return(site)
+}
+
 #' lookup_data_positions
 #'
 #' @param dataset_name Character. Name of an available dataset.
@@ -44,11 +54,12 @@ get_metadata <- function(dataset_name, type) {
     type,
     "description" = "url_description_file",
     "single" = "url_single_artefacts_file",
-    "multi" = "url_multi_artefacts_file"
+    "multi" = "url_multi_artefacts_file",
+    "site" = "site"
   )
-  url <- metdata_for_dataset[,type_column]
-  if (is.na(url)) {stop(paste("No", type, "data available for dataset", dataset_name))}
-  return(url)
+  info <- metdata_for_dataset[,type_column]
+  if (is.na(info)) {stop(paste("No", type, "data available for dataset", dataset_name))}
+  return(info)
 }
 
 #' get_type_options
