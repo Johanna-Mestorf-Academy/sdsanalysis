@@ -3,6 +3,7 @@
 export(apply_attr_types)
 export(apply_var_types)
 export(get_available_datasets)
+export(get_coords)
 export(get_dataset_metadata)
 export(get_description)
 export(get_metadata)

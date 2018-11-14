@@ -41,6 +41,16 @@ get_site <- function(dataset_name) {
   return(site)
 }
 
+#' get_site
+#'
+#' @param dataset_name Character. Name of an available dataset.
+#'
+#' @export
+get_coords <- function(dataset_name) {
+  coords <- get_metadata(dataset_name, "coords")
+  return(coords)
+}
+
 #' lookup_data_positions
 #'
 #' @param dataset_name Character. Name of an available dataset.
@@ -55,10 +65,11 @@ get_metadata <- function(dataset_name, type) {
     "description" = "url_description_file",
     "single" = "url_single_artefacts_file",
     "multi" = "url_multi_artefacts_file",
-    "site" = "site"
+    "site" = "site",
+    "coords" = c("lat", "lon")
   )
   info <- metdata_for_dataset[,type_column]
-  if (is.na(info)) {stop(paste("No", type, "data available for dataset", dataset_name))}
+  if (any(is.na(info))) {stop(paste("No", type, "data available for dataset", dataset_name))}
   return(info)
 }
 
