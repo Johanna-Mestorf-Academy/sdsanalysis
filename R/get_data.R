@@ -58,6 +58,16 @@ get_coords <- function(dataset_names) {
   return(coords)
 }
 
+#' get_dating
+#'
+#' @param dataset_names Character vector. Names of available datasets.
+#'
+#' @export
+get_dating <- function(dataset_names) {
+  dating <- get_metadata(dataset_names, "dating")
+  return(dating)
+}
+
 #' get_type_options
 #'
 #' @param dataset_names Character vector. Names of available datasets.
@@ -99,7 +109,8 @@ get_metadata_one <- function(dataset_name, type) {
     "single_artefacts" = "url_single_artefacts_file",
     "multi_artefacts" = "url_multi_artefacts_file",
     "site" = "site",
-    "coords" = c("lat", "lon")
+    "coords" = c("lat", "lon"),
+    "dating" = "dating"
   )
   info <- metdata_for_dataset[,type_column]
   if (any(is.na(info))) {stop(paste("No", type, "data available for dataset", dataset_name))}
