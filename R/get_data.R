@@ -126,8 +126,17 @@ get_available_datasets <- function() {
 }
 
 # get_dataset_metadata
-get_dataset_metadata <- function() {
-  pos <- "https://raw.githubusercontent.com/Johanna-Mestorf-Academy/sdsanalysis/master/data-raw/dataset_metadata_list.csv"
-  data_position <- utils::read.csv(pos, stringsAsFactors = FALSE, na.strings = "")
-  return(data_position)
+get_dataset_metadata <- function(
+  pos = "https://raw.githubusercontent.com/Johanna-Mestorf-Academy/sdsanalysis/master/data-raw/dataset_metadata_list.csv"
+) {
+  dataset_metadata_directory <- file.path(tempdir(), "sdsanalysis_dataset_metadata")
+  dataset_metadata_file <- file.path(dataset_metadata_directory, "dataset_metadata.RData")
+  if (file.exists(dataset_metadata_file)) {
+    load(dataset_metadata_file)
+  } else {
+    dir.create(dataset_metadata_directory)
+    dataset_metadata <- utils::read.csv(pos, stringsAsFactors = FALSE, na.strings = "")
+    save(dataset_metadata, file = dataset_metadata_file)
+  }
+  return(dataset_metadata)
 }
