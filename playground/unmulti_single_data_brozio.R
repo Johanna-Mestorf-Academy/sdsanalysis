@@ -1,7 +1,8 @@
 library(magrittr)
 
+#### read wrong data ####
 sds <- read.csv(
-  "/home/clemens/sds/sdsdata/Bad-Oldesloe_Wolkenwehe/alt/Bad_Oldesloe-Wolkenwehe_LA154_single.csv",
+  "/home/clemens/sds/sdsdata/Wangels/alt/Wangels_LA69_single.csv",
   stringsAsFactors = FALSE
   )
 
@@ -57,3 +58,9 @@ sds <- sds %>%
       }
     ))
   )
+
+#### write correct data ####
+write.csv(
+  sds, file = "/home/clemens/sds/sdsdata/Wangels/Wangels_LA69_single.csv",
+  row.names = FALSE
+)
