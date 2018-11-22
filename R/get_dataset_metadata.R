@@ -1,3 +1,19 @@
+#' get_all_sds_data_urls
+#'
+#' @export
+get_all_sds_data_urls <- function() {
+  all_datasets <- get_available_datasets()
+  type_options <- get_type_options(all_datasets)
+  res <- c()
+  for (p1 in 1:length(all_datasets)) {
+    type_options[[p1]] <- append(type_options[[p1]], "description")
+    for (p2 in 1:length(type_options[[p1]])) {
+      res <- append(res, get_metadata(all_datasets[p1], type_options[[p1]][p2]))
+    }
+  }
+  return(res)
+}
+
 #' get_single_artefact_data
 #'
 #' @param dataset_names Character vector. Names of available datasets.
