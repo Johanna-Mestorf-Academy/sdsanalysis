@@ -10,6 +10,19 @@ sdsanalysis is the backbone of the [sdsbrowser](https://github.com/Johanna-Mesto
 
 Beyond that sdsanalysis can be employed to analysis SDS stone artefact data in R. It offers two major functionalities for this purpose:
 
-## Download of available SDS datasets
+#### **Download available SDS datasets**
 
-## 
+sdsanalysis offers -- among others -- the following functions to access available SDS data:
+
+- `get_available_datasets()`: Get a list of datasets that can be directly downloaded with sdsanalysis
+- `get_type_options(dataset_names)`: Get the types of data that are available for one/multiple datasets (single - *Einzelaufnahme*, multi - *Sammelaufnahme*)
+- `get_single_artefact_data(dataset_names)` / `get_multi_artefact_data(dataset_names)`: Download one/multiple datasets as a dataframe/a list of dataframes
+- `get_description(dataset_names)`: Download description text of one/multiple datasets
+- `get_site(dataset_names)`: Get site names of one/multiple datasets
+- `get_coords(dataset_names)`: Get site coordinates of one/multiple datasets
+- `get_dating(dataset_names)`: Get period information of one/multiple datasets
+- `get_creator(dataset_names)`: Get author of one/multiple datasets
+
+
+#### **Decoding the alphanumerical coding scheme of SDS**
+
