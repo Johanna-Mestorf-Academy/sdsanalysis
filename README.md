@@ -4,4 +4,12 @@ Status](https://travis-ci.org/Johanna-Mestorf-Academy/sdsanalysis.svg?branch=mas
 
 # sdsanalysis
 
-**SDS** (*Systematic and digital documentation of stone artefacts*) [1] is a recording system for stone artefacts. It was created as an uniform coding and standardized listing system of the conventional attributes recorded at lithic inventories to enable well structured, quantitative and comparative analysis. The variable collection in SDS was compiled from several established documentation systems [2]-[7].
+sdsanalysis is the backbone of the [sdsbrowser](https://github.com/Johanna-Mestorf-Academy/sdsbrowser) webapp. To learn more about it's role for this webapp please check the [For developers](https://github.com/Johanna-Mestorf-Academy/sdsbrowser#for-developers) section in the README over there. 
+
+<img align="right" style="padding-left:20px; padding-bottom:10px;" src="https://raw.githubusercontent.com/Johanna-Mestorf-Academy/sdsbrowser/master/inst/sds_logo/colour/Logo_SDS_colour_300dpi.png" width = 270>
+
+Beyond that sdsanalysis can be employed to analysis SDS stone artefact data in R. It offers two major functionalities for this purpose:
+
+## Download of available SDS datasets
+
+## 
