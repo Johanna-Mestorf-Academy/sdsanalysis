@@ -5,8 +5,7 @@ Authors@R: c(
   person("Clemens", "Schmid", email = "clemens@nevrome.de", role = c("cre", "cph", "aut")),
   person("Christoph", "Rinne", email = "crinne@ufg.uni-kiel.de", role = c("fnd", "rev"))
   )
-Description: sdsanalysis provides functions to decode SDS stone tool analysis data and to download 
-openly available SDS datasets. It serves as backbone of the sdsbrowser webapp. 
+Description: sdsanalysis provides functions to decode SDS stone tool analysis data and to download openly available SDS datasets. It serves as backbone of the sdsbrowser webapp. 
 Depends: R (>= 3.5.0)
 License: GPL-2 | file LICENSE
 Encoding: UTF-8
