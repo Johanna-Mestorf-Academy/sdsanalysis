@@ -1,7 +1,33 @@
-#' get_single_artefact_data
-#'
+#' @name sdsdownload
+#' 
+#' @title sdsanalysis data download functions
+#' 
+#' @description 
+#' sdsanalysis offers the following functions to access available SDS data.
+#' 
+#' \itemize{
+#'   \item{\code{\link{get_available_datasets}}: Get a list of datasets that can 
+#'   be directly downloaded with sdsanalysis}
+#'   \item{\code{\link{get_type_options}}: Get the types of data that are available 
+#'   for one/multiple datasets (single - \emph{Einzelaufnahme}, multi - \emph{Sammelaufnahme})}
+#'   \item{\code{\link{get_single_artefact_data}} / 
+#'   \code{\link{get_multi_artefact_data}}: Download one/multiple datasets as a 
+#'   dataframe/a list of dataframes}
+#'   \item{\code{\link{get_description}}: Download description text of one/
+#'   multiple datasets}
+#'   \item{\code{\link{get_site}}: Get site names of one/multiple datasets}
+#'   \item{\code{\link{get_coords}}: Get site coordinates of one/multiple datasets}
+#'   \item{\code{\link{get_dating}}: Get period information of one/multiple datasets}
+#'   \item{\code{\link{get_creator}}: Get author of one/multiple datasets}
+#' }
+#' 
+#' @rdname download
+#' 
 #' @param dataset_names Character vector. Names of available datasets.
-#'
+#' 
+NULL
+
+#' @rdname download
 #' @export
 get_single_artefact_data <- function(dataset_names) {
   dataset_urls <- get_metadata(dataset_names, "single_artefacts")
@@ -12,10 +38,7 @@ get_single_artefact_data <- function(dataset_names) {
   return(dataset_list)
 }
 
-#' get_multi_artefact_data
-#'
-#' @param dataset_names Character vector. Names of available datasets.
-#'
+#' @rdname download
 #' @export
 get_multi_artefact_data <- function(dataset_names) {
   dataset_urls <- get_metadata(dataset_names, "multi_artefacts")
@@ -26,10 +49,7 @@ get_multi_artefact_data <- function(dataset_names) {
   return(dataset_list)
 }
 
-#' get_description
-#'
-#' @param dataset_names Character vector. Names of available datasets.
-#'
+#' @rdname download
 #' @export
 get_description <- function(dataset_names) {
   dataset_urls <- get_metadata(dataset_names, "description")
@@ -38,50 +58,35 @@ get_description <- function(dataset_names) {
   return(dataset_list)
 }
 
-#' get_site
-#'
-#' @param dataset_names Character vector. Names of available datasets.
-#'
+#' @rdname download
 #' @export
 get_site <- function(dataset_names) {
   site <- get_metadata(dataset_names, "site")
   return(site)
 }
 
-#' get_coords
-#'
-#' @param dataset_names Character vector. Names of available datasets.
-#'
+#' @rdname download
 #' @export
 get_coords <- function(dataset_names) {
   coords <- get_metadata(dataset_names, "coords")
   return(coords)
 }
 
-#' get_dating
-#'
-#' @param dataset_names Character vector. Names of available datasets.
-#'
+#' @rdname download
 #' @export
 get_dating <- function(dataset_names) {
   dating <- get_metadata(dataset_names, "dating")
   return(dating)
 }
 
-#' get_creator
-#'
-#' @param dataset_names Character vector. Names of available datasets.
-#'
+#' @rdname download
 #' @export
 get_creator <- function(dataset_names) {
   creator <- get_metadata(dataset_names, "creator")
   return(creator)
 }
 
-#' get_type_options
-#'
-#' @param dataset_names Character vector. Names of available datasets.
-#'
+#' @rdname download
 #' @export
 get_type_options <- function(dataset_names) {
   types_list <- lapply(dataset_names, get_type_options_one)
@@ -128,8 +133,7 @@ get_metadata_one <- function(dataset_name, type) {
   return(info)
 }
 
-#' get_available_datasets
-#'
+#' @rdname download
 #' @export
 get_available_datasets <- function() {
   data_position <- get_dataset_metadata() 
@@ -152,8 +156,7 @@ get_dataset_metadata <- function(
   return(dataset_metadata)
 }
 
-#' get_all_sds_data_urls
-#'
+#' @rdname download
 #' @export
 get_all_sds_data_urls <- function() {
   all_datasets <- get_available_datasets()
@@ -168,15 +171,13 @@ get_all_sds_data_urls <- function() {
   return(res)
 }
 
-#' get_variable_values_list
-#'
+#' @rdname download
 #' @export
 get_variables_list <- function() {
   return(variables)
 }
 
-#' get_variable_values_list
-#'
+#' @rdname download
 #' @export
 get_variable_values_list <- function() {
   return(variable_values)
