@@ -1,10 +1,12 @@
 Package: sdsanalysis
-Title: What the Package Does (one line, title case)
-Version: 0.0.0.9000
+Title: Interface To Work With SDS Stone Tool Analysis Data
+Version: 1.0.0
 Authors@R: c(
-  person("Clemens", "Schmid", email = "clemens@nevrome.de", role = c("cre", "cph", "aut"))
+  person("Clemens", "Schmid", email = "clemens@nevrome.de", role = c("cre", "cph", "aut")),
+  person("Christoph", "Rinne", email = "crinne@ufg.uni-kiel.de", role = c("fnd", "rev"))
   )
-Description: What the package does (one paragraph).
+Description: sdsanalysis provides functions to decode SDS stone tool analysis data and to download 
+openly available SDS datasets. It serves as backbone of the sdsbrowser webapp. 
 Depends: R (>= 3.5.0)
 License: GPL-2 | file LICENSE
 Encoding: UTF-8
