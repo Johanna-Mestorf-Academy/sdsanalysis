@@ -33,30 +33,30 @@ sdsanalysis offers functions to quickly decode the cryptic codes in the SDS tabl
 
 - `lookup_everything`: Wizard function. Enter a [SDS data.frame](https://github.com/Johanna-Mestorf-Academy/sdsbrowser#a-new-dataset) and receive a decoded version. This function employs the ones below and some more helpers to make the decoding process as simple as possible
 - `lookup_vars`: 
-  **In:** character vector with variable IDs (e.g. *FB1_23, FB2_56*)
-  **Out:** character vector with short variable names (*menge_rinde, dorsal_praep*)
+  - **In:** character vector with variable IDs (e.g. *FB1_23, FB2_56*)
+  - **Out:** character vector with short variable names (*menge_rinde, dorsal_praep*)
 - `lookup_var_complete_names`: 
-  **In:** character vector with short variable names (*menge_rinde, dorsal_praep*)
-  **Out:** character vector with long variable names  
+  - **In:** character vector with short variable names (*menge_rinde, dorsal_praep*)
+  - **Out:** character vector with long variable names  
  (e.g. *Art der Dorsalflaechenpraeparation, Menge der Rinde und natuerlichen Sprungflaeche*)
 - `lookup_var_types`: 
-  **In:** character vector with short variable names (*menge_rinde, dorsal_praep*)
-  **Out:** character vector with variable data types (e.g. *character, numeric*)
+  - **In:** character vector with short variable names (*menge_rinde, dorsal_praep*)
+  - **Out:** character vector with variable data types (e.g. *character, numeric*)
 - `apply_var_types`: 
-  **In:** encoded variable vector (SDS data.frame column) + respective variable short name
-  **Out:** encoded variable vector with corrected data type
+  - **In:** encoded variable vector (SDS data.frame column) + respective variable short name
+  - **Out:** encoded variable vector with corrected data type
 *apply* instead of *lookup*, because in this case the result of an other lookup is 
 used to manipulate the input vector.
 - `lookup_attrs`: 
-  **In:** variable vector (SDS data.frame column) + respective variable short name
-  **Out:** decoded variable vector
+  - **In:** variable vector (SDS data.frame column) + respective variable short name
+  - **Out:** decoded variable vector
 - `lookup_attr_types`: 
-  **In:** encoded variable vector (SDS data.frame column) + respective variable short name
-  **Out:** character vector with semantic type (e.g. *normal, unknown*)
+  - **In:** encoded variable vector (SDS data.frame column) + respective variable short name
+  - **Out:** character vector with semantic type (e.g. *normal, unknown*)
 - `apply_attr_types`: 
-  **In:** encoded variable vector (SDS data.frame column) + respective variable short name
-  **Out:** encoded variable vector with the correct values set to NA based on the semantic 
+  - **In:** encoded variable vector (SDS data.frame column) + respective variable short name
+  - **Out:** encoded variable vector with the correct values set to NA based on the semantic 
  type
 - `lookup_IGerM_category`: 
-  **In:** decoded IGerM vector
-  **Out:** IGerM category or subcategory vector 
+  - **In:** decoded IGerM vector
+  - **Out:** IGerM category or subcategory vector 
