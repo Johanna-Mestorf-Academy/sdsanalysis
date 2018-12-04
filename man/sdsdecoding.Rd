@@ -95,7 +95,7 @@ and
   \emph{apply} instead of \emph{lookup}, because in this case the result of an other lookup is 
   used to manipulate the input vector.
   \item{\code{\link{lookup_attrs}}: 
-    \strong{In:} variable vector (SDS data.frame column) + respective variable short name
+    \strong{In:} encoded variable vector (SDS data.frame column) + respective variable short name
     \strong{Out:} decoded variable vector
   }
   \item{\code{\link{lookup_attr_types}}: 
