@@ -12,28 +12,37 @@
 #' a computer in reach.
 #' 
 #' The encoding has the big disadvantage that it's not immediately human readable.
-#' If you try to understand an SDS dataset you're forced to constantly look up new 
-#' variables in the SDS publications. That makes it very difficult to get a fast 
-#' overview of an SDS dataset.
+#' If you try to understand a SDS dataset you're forced to constantly look up new 
+#' variables in the 
+#' \href{https://github.com/Johanna-Mestorf-Academy/sdsbrowser#references}{SDS publications}. 
+#' That makes it very difficult to get a fast overview.
 #' 
 #' sdsanalysis offers functions to quickly decode the cryptic codes in the SDS 
 #' tables and replace them with human readable descriptions. This is implemented 
 #' with hash tables to enable high-speed transformation even for datasets with 
-#' thousands of artefacts.
+#' thousands of artefacts. The hash tables are compiled from two reference tables for 
+#' \href{https://github.com/Johanna-Mestorf-Academy/sdsanalysis/blob/master/data-raw/variable_list.csv}{variables}
+#' and 
+#' \href{https://github.com/Johanna-Mestorf-Academy/sdsanalysis/blob/master/data-raw/variable_values_list.csv}{variable values}. 
 #' 
 #' \itemize{
-#'   \item{\code{\link{lookup_everything}}: Wizard function. Enter a SDS data.frame and 
-#'   receive a decoded version}
-#'   \item{\code{\link{lookup_vars}}: Get short variable names from IDs}
-#'   \item{\code{\link{lookup_var_complete_names}}: Get long variable names from short 
-#'   variable names}
-#'   \item{\code{\link{lookup_var_types}}: Get variable data types from short variable 
-#'   names}
-#'   \item{\code{\link{apply_var_types}}: Get variable vector with correct data type from 
-#'   variable vector with arbitrary data type}
+#'   \item{\code{\link{lookup_everything}}: Wizard function. Enter a 
+#'   \href{https://github.com/Johanna-Mestorf-Academy/sdsbrowser#a-new-dataset}{SDS data.frame}
+#'   and receive a decoded version. This function employs the ones below and some more
+#'   helpers to make the decoding process as simple as possible}
+#'   \item{\code{\link{lookup_vars}}: Get short variable names 
+#'   (e.g. (\emph{menge_rinde, dorsal_praep}) from IDs (e.g. \emph{FB1_23, FB2_56})}
+#'   \item{\code{\link{lookup_var_complete_names}}: Get long variable names 
+#'   (e.g. \emph{Art der Dorsalflaechenpraeparation, Menge der Rinde und natuerlichen Sprungflaeche}) 
+#'   from short variable names}
+#'   \item{\code{\link{lookup_var_types}}: Get variable data types (e.g. \emph{character, numeric})
+#'   from short variable names}
+#'   \item{\code{\link{apply_var_types}}: Get variable vector with correct data type from
+#'   variable vector with arbitrary data type. \emph{apply} instead of \emph{lookup}, because
+#'   in this case the result of an other lookup is used to manipulate another vector.
 #'   \item{\code{\link{lookup_attrs}}: Get decoded version of encoded variable vector}
-#'   \item{\code{\link{lookup_attr_types}}: Get variable vector with semantic type from 
-#'   variable vector}
+#'   \item{\code{\link{lookup_attr_types}}: Get variable vector with semantic type
+#'   (e.g. \emph{normal, unknown}) from variable vector}
 #'   \item{\code{\link{apply_attr_types}}: Get variable vector with the correct values set 
 #'   to NA based on the semantic type vector from variable vector}
 #'   \item{\code{\link{lookup_IGerM_category}}: Get IGerM category or subcategory vector 
