@@ -44,7 +44,11 @@ get_variable_values_list()
 \item{dataset_names}{Character vector. Names of available datasets.}
 }
 \description{
-sdsanalysis offers the following functions to access available SDS data.
+sdsanalysis offers functions to access openly available SDS datasets. It contains a
+\href{https://github.com/Johanna-Mestorf-Academy/sdsanalysis/blob/master/data-raw/dataset_metadata_list.csv}{reference table}
+with information about data mostly collected by students and researchers at the 
+Institute of Pre- and Protohistoric Archaeology at Kiel University. That data can be 
+downloaded directly into R with sdsanalysis.
 
 \itemize{
   \item{\code{\link{get_available_datasets}}: Get a list of datasets that can 

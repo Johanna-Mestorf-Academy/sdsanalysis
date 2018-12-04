@@ -12,7 +12,7 @@ Beyond that sdsanalysis can be employed to analysis SDS stone artefact data in R
 
 <img align="right" style="padding-left:20px; padding-bottom:10px;" src="https://raw.githubusercontent.com/Johanna-Mestorf-Academy/sdsbrowser/master/inst/sds_logo/colour/Logo_SDS_colour_300dpi.png" width = 270>
 
-sdsanalysis offers -- among others -- the following functions to access available SDS data:
+sdsanalysis offers functions to access openly available SDS datasets. It contains a [reference table](https://github.com/Johanna-Mestorf-Academy/sdsanalysis/blob/master/data-raw/dataset_metadata_list.csv) with information about data mostly collected by students and researchers at the Institute of Pre- and Protohistoric Archaeology at Kiel University. That data can be downloaded directly into R with sdsanalysis.
 
 - `get_available_datasets`: Get a list of datasets that can be directly downloaded with sdsanalysis
 - `get_type_options`: Get the types of data that are available for one/multiple datasets (single - *Einzelaufnahme*, multi - *Sammelaufnahme*)
