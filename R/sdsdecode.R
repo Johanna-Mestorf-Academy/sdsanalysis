@@ -30,23 +30,42 @@
 #'   \href{https://github.com/Johanna-Mestorf-Academy/sdsbrowser#a-new-dataset}{SDS data.frame}
 #'   and receive a decoded version. This function employs the ones below and some more
 #'   helpers to make the decoding process as simple as possible}
-#'   \item{\code{\link{lookup_vars}}: Get short variable names 
-#'   (e.g. (\emph{menge_rinde, dorsal_praep}) from IDs (e.g. \emph{FB1_23, FB2_56})}
-#'   \item{\code{\link{lookup_var_complete_names}}: Get long variable names 
-#'   (e.g. \emph{Art der Dorsalflaechenpraeparation, Menge der Rinde und natuerlichen Sprungflaeche}) 
-#'   from short variable names}
-#'   \item{\code{\link{lookup_var_types}}: Get variable data types (e.g. \emph{character, numeric})
-#'   from short variable names}
-#'   \item{\code{\link{apply_var_types}}: Get variable vector with correct data type from
-#'   variable vector with arbitrary data type. \emph{apply} instead of \emph{lookup}, because
-#'   in this case the result of an other lookup is used to manipulate another vector.
-#'   \item{\code{\link{lookup_attrs}}: Get decoded version of encoded variable vector}
-#'   \item{\code{\link{lookup_attr_types}}: Get variable vector with semantic type
-#'   (e.g. \emph{normal, unknown}) from variable vector}
-#'   \item{\code{\link{apply_attr_types}}: Get variable vector with the correct values set 
-#'   to NA based on the semantic type vector from variable vector}
-#'   \item{\code{\link{lookup_IGerM_category}}: Get IGerM category or subcategory vector 
-#'   from IGerM vector}
+#'   \item{\code{\link{lookup_vars}}: 
+#'     \strong{In:} character vector with variable IDs (e.g. \emph{FB1_23, FB2_56})
+#'     \strong{Out:} character vector with short variable names (\emph{menge_rinde, dorsal_praep})
+#'   }
+#'   \item{\code{\link{lookup_var_complete_names}}: 
+#'     \strong{In:} character vector with short variable names (\emph{menge_rinde, dorsal_praep})
+#'     \strong{Out:} character vector with long variable names  
+#'     (e.g. \emph{Art der Dorsalflaechenpraeparation, Menge der Rinde und natuerlichen Sprungflaeche}) 
+#'   }
+#'   \item{\code{\link{lookup_var_types}}: 
+#'     \strong{In:} character vector with short variable names (\emph{menge_rinde, dorsal_praep})
+#'     \strong{Out:} character vector with variable data types (e.g. \emph{character, numeric})
+#'   }
+#'   \item{\code{\link{apply_var_types}}: 
+#'     \strong{In:} encoded variable vector (SDS data.frame column) + respective variable short name
+#'     \strong{Out:} encoded variable vector with corrected data type
+#'   } 
+#'   \emph{apply} instead of \emph{lookup}, because in this case the result of an other lookup is 
+#'   used to manipulate the input vector.
+#'   \item{\code{\link{lookup_attrs}}: 
+#'     \strong{In:} encoded variable vector (SDS data.frame column) + respective variable short name
+#'     \strong{Out:} decoded variable vector
+#'   }
+#'   \item{\code{\link{lookup_attr_types}}: 
+#'     \strong{In:} encoded variable vector (SDS data.frame column) + respective variable short name
+#'     \strong{Out:} character vector with semantic type (e.g. \emph{normal, unknown})
+#'   }
+#'   \item{\code{\link{apply_attr_types}}: 
+#'     \strong{In:} encoded variable vector (SDS data.frame column) + respective variable short name
+#'     \strong{Out:} encoded variable vector with the correct values set to NA based on the semantic 
+#'     type
+#'   }
+#'   \item{\code{\link{lookup_IGerM_category}}: 
+#'     \strong{In:} decoded IGerM vector
+#'     \strong{Out:} IGerM category or subcategory vector 
+#'   }
 #' }
 #' 
 #' @rdname sdsdecoding
