@@ -45,7 +45,7 @@ sdsanalysis offers functions to quickly decode the cryptic codes in the SDS tabl
 - `apply_var_types`: 
   - **In:** encoded variable vector (SDS data.frame column) + respective variable short name
   - **Out:** encoded variable vector with corrected data type
-*apply* instead of *lookup*, because in this case the result of an other lookup is 
+  - *apply* instead of *lookup*, because in this case the result of an other lookup is 
 used to manipulate the input vector.
 - `lookup_attrs`: 
   - **In:** variable vector (SDS data.frame column) + respective variable short name
