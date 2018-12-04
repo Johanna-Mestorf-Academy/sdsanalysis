@@ -8,7 +8,7 @@ sdsanalysis is the backbone of the [sdsbrowser](https://github.com/Johanna-Mesto
 
 Beyond that sdsanalysis can be employed to analysis SDS stone artefact data in R. It offers two major functionalities for this purpose:
 
-#### **Download available SDS datasets**
+#### **Download available SDS datasets** `?sdsdownload`
 
 <img align="right" style="padding-left:20px; padding-bottom:10px;" src="https://raw.githubusercontent.com/Johanna-Mestorf-Academy/sdsbrowser/master/inst/sds_logo/colour/Logo_SDS_colour_300dpi.png" width = 270>
 
@@ -23,7 +23,7 @@ sdsanalysis offers -- among others -- the following functions to access availabl
 - `get_dating`: Get period information of one/multiple datasets
 - `get_creator`: Get author of one/multiple datasets
 
-#### **Decoding the alphanumerical coding scheme of SDS**
+#### **Decoding the alphanumerical coding scheme of SDS** `?sdsdecoding`
 
 SDS traditionally provides a set of predefined values for each variable. That's not just convenience: It theoretically also allows for a high degree of comparability between different datasets. This predefined values/categories are encoded with a simple and minimalistic alphanumerical scheme. That's a technological rudiment both from the time when the systems that served SDS as an inspiration were created and when most stone tool analysis was made without a computer in reach. 
 
