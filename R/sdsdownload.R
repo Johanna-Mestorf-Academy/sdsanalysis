@@ -21,13 +21,13 @@
 #'   \item{\code{\link{get_creator}}: Get author of one/multiple datasets}
 #' }
 #' 
-#' @rdname download
+#' @rdname sdsdownload
 #' 
 #' @param dataset_names Character vector. Names of available datasets.
 #' 
 NULL
 
-#' @rdname download
+#' @rdname sdsdownload
 #' @export
 get_single_artefact_data <- function(dataset_names) {
   dataset_urls <- get_metadata(dataset_names, "single_artefacts")
@@ -38,7 +38,7 @@ get_single_artefact_data <- function(dataset_names) {
   return(dataset_list)
 }
 
-#' @rdname download
+#' @rdname sdsdownload
 #' @export
 get_multi_artefact_data <- function(dataset_names) {
   dataset_urls <- get_metadata(dataset_names, "multi_artefacts")
@@ -49,7 +49,7 @@ get_multi_artefact_data <- function(dataset_names) {
   return(dataset_list)
 }
 
-#' @rdname download
+#' @rdname sdsdownload
 #' @export
 get_description <- function(dataset_names) {
   dataset_urls <- get_metadata(dataset_names, "description")
@@ -58,35 +58,35 @@ get_description <- function(dataset_names) {
   return(dataset_list)
 }
 
-#' @rdname download
+#' @rdname sdsdownload
 #' @export
 get_site <- function(dataset_names) {
   site <- get_metadata(dataset_names, "site")
   return(site)
 }
 
-#' @rdname download
+#' @rdname sdsdownload
 #' @export
 get_coords <- function(dataset_names) {
   coords <- get_metadata(dataset_names, "coords")
   return(coords)
 }
 
-#' @rdname download
+#' @rdname sdsdownload
 #' @export
 get_dating <- function(dataset_names) {
   dating <- get_metadata(dataset_names, "dating")
   return(dating)
 }
 
-#' @rdname download
+#' @rdname sdsdownload
 #' @export
 get_creator <- function(dataset_names) {
   creator <- get_metadata(dataset_names, "creator")
   return(creator)
 }
 
-#' @rdname download
+#' @rdname sdsdownload
 #' @export
 get_type_options <- function(dataset_names) {
   types_list <- lapply(dataset_names, get_type_options_one)
@@ -133,7 +133,7 @@ get_metadata_one <- function(dataset_name, type) {
   return(info)
 }
 
-#' @rdname download
+#' @rdname sdsdownload
 #' @export
 get_available_datasets <- function() {
   data_position <- get_dataset_metadata() 
@@ -156,7 +156,7 @@ get_dataset_metadata <- function(
   return(dataset_metadata)
 }
 
-#' @rdname download
+#' @rdname sdsdownload
 #' @export
 get_all_sds_data_urls <- function() {
   all_datasets <- get_available_datasets()
@@ -171,13 +171,13 @@ get_all_sds_data_urls <- function() {
   return(res)
 }
 
-#' @rdname download
+#' @rdname sdsdownload
 #' @export
 get_variables_list <- function() {
   return(variables)
 }
 
-#' @rdname download
+#' @rdname sdsdownload
 #' @export
 get_variable_values_list <- function() {
   return(variable_values)

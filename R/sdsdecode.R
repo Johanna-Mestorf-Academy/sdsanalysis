@@ -40,7 +40,7 @@
 #'   from IGerM vector}
 #' }
 #' 
-#' @rdname decoding
+#' @rdname sdsdecoding
 #' 
 #' @param sds_df Dataframe. Data.frame in SDS standard format.
 #' @param var_ids Character Vector. Variable IDs.
@@ -53,7 +53,7 @@
 #' 
 NULL
 
-#' @rdname decoding
+#' @rdname sdsdecoding
 #' @export
 lookup_everything <- function(sds_df) {
   
@@ -87,7 +87,7 @@ lookup_everything <- function(sds_df) {
   
 }
 
-#' @rdname decoding
+#' @rdname sdsdecoding
 #' @export
 lookup_vars <- function(var_ids) {
 
@@ -107,7 +107,7 @@ lookup_vars <- function(var_ids) {
   return(res)
 }
 
-#' @rdname decoding
+#' @rdname sdsdecoding
 #' @export
 lookup_var_complete_names <- function(var_short_names) {
 
@@ -122,7 +122,7 @@ lookup_var_complete_names <- function(var_short_names) {
   return(unlist(var_complete_name))
 }
 
-#' @rdname decoding
+#' @rdname sdsdecoding
 #' @export
 lookup_var_types <- function(var_short_names) {
   
@@ -137,7 +137,7 @@ lookup_var_types <- function(var_short_names) {
   return(unlist(var_type))
 }
 
-#' @rdname decoding
+#' @rdname sdsdecoding
 #' @export
 apply_var_types <- function(var_data, var_short_name) {
   
@@ -169,7 +169,7 @@ string_to_as <- function(x) {
   )
 }
 
-#' @rdname decoding
+#' @rdname sdsdecoding
 #' @export
 lookup_attrs <- function(var_data, var_short_name) {
   
@@ -197,7 +197,7 @@ lookup_attrs <- function(var_data, var_short_name) {
   return(res)
 }
 
-#' @rdname decoding
+#' @rdname sdsdecoding
 #' @export
 lookup_attr_types <- function(var_data, var_short_name) {
   
@@ -225,7 +225,7 @@ lookup_attr_types <- function(var_data, var_short_name) {
   return(res)
 }
 
-#' @rdname decoding
+#' @rdname sdsdecoding
 #' @export
 apply_attr_types <- function(var_data, var_short_name) {
   
@@ -255,7 +255,7 @@ na_vars_switch <- function(attr_type, value) {
   )
 }
 
-#' @rdname decoding
+#' @rdname sdsdecoding
 #' @export
 lookup_IGerM_category <- function(igerm_data, subcategory = FALSE) {
   
