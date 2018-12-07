@@ -141,7 +141,7 @@ get_metadata_one <- function(dataset_name, type) {
 #' @export
 get_available_datasets <- function() {
   data_position <- get_dataset_metadata() 
-  unique(data_position$id)
+  sort(unique(data_position$id))
 }
 
 # get_dataset_metadata
