@@ -1,3 +1,6 @@
 language: R
 cache: packages
 warnings_are_errors: true
+
+after_success:
+  - curl --data build=true -X POST https://registry.hub.docker.com/u/johannamestorfacademy/sdsbrowser/trigger/00b86522-0641-4ecc-bb17-04f1fc9feaa6/
