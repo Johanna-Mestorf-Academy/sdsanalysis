@@ -150,7 +150,17 @@ get_dataset_metadata <- function(
 ) {
   dataset_metadata_directory <- file.path(tempdir(), "sdsanalysis_dataset_metadata")
   dataset_metadata_file <- file.path(dataset_metadata_directory, "dataset_metadata.RData")
-  if (file.exists(dataset_metadata_file)) {
+  # check if file is already here
+  file_already_here <- file.exists(dataset_metadata_file)
+  # check if file is too old
+  here_and_not_to_old <- FALSE
+  if (file_already_here) {
+    info <- file.info(dataset_metadata_file)
+    age <- as.numeric(difftime(Sys.time(), info$mtime, units = "mins"))
+    here_and_not_to_old <- age < 10
+  }
+  # load or download file depending on availability
+  if (here_and_not_to_old) {
     load(dataset_metadata_file)
   } else {
     dir.create(dataset_metadata_directory)
