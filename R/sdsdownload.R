@@ -36,7 +36,7 @@ NULL
 get_single_artefact_data <- function(dataset_names) {
   dataset_urls <- get_metadata(dataset_names, "single_artefacts")
   dataset_list <- lapply(dataset_urls, function(x) {
-    utils::read.csv(x, stringsAsFactors = FALSE, check.names = FALSE, numerals = "no.loss")
+    utils::read.csv(x, stringsAsFactors = FALSE, check.names = TRUE, numerals = "no.loss")
   })
   if (is.list(dataset_list) & length(dataset_list) == 1) {dataset_list <- dataset_list[[1]]}
   return(dataset_list)
@@ -47,7 +47,7 @@ get_single_artefact_data <- function(dataset_names) {
 get_multi_artefact_data <- function(dataset_names) {
   dataset_urls <- get_metadata(dataset_names, "multi_artefacts")
   dataset_list <- lapply(dataset_urls, function(x) {
-    utils::read.csv(x, stringsAsFactors = FALSE, check.names = FALSE, numerals = "no.loss")
+    utils::read.csv(x, stringsAsFactors = FALSE, check.names = TRUE, numerals = "no.loss")
   })
   if (is.list(dataset_list) & length(dataset_list) == 1) {dataset_list <- dataset_list[[1]]}
   return(dataset_list)
@@ -57,7 +57,7 @@ get_multi_artefact_data <- function(dataset_names) {
 #' @export
 get_description <- function(dataset_names) {
   dataset_urls <- get_metadata(dataset_names, "description")
-  dataset_list <- lapply(dataset_urls, function(x) {readLines(x)})
+  dataset_list <- lapply(dataset_urls, function(x) {readLines(x, warn = FALSE)})
   if (is.list(dataset_list) & length(dataset_list) == 1) {dataset_list <- dataset_list[[1]]}
   return(dataset_list)
 }
