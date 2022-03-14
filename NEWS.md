@@ -1,0 +1,1 @@
+- V1.0.1: Fixed a name clash in German SDS variable names and made dataset file reading more robust
