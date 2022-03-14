@@ -1,5 +1,3 @@
-[![Travis-CI Build
-Status](https://travis-ci.org/Johanna-Mestorf-Academy/sdsanalysis.svg?branch=master)](https://travis-ci.org/Johanna-Mestorf-Academy/sdsanalysis)
 [![license](https://img.shields.io/badge/license-GPL%202-B50B82.svg)](https://github.com/nevrome/sdsanalysis/blob/master/LICENSE)
 
 # sdsanalysis

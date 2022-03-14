@@ -1,8 +1,8 @@
 library(magrittr)
 
 #### get meta data ####
-variables <- data.table::fread("data-raw/variable_list.csv") %>% tibble::as.tibble()
-variable_values <- data.table::fread("data-raw/variable_values_list.csv") %>% tibble::as.tibble()
+variables <- data.table::fread("data-raw/variable_list.csv") %>% tibble::as_tibble()
+variable_values <- data.table::fread("data-raw/variable_values_list.csv") %>% tibble::as_tibble()
 
 
 
